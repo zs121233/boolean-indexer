@@ -29,13 +29,6 @@
             <scope>test</scope>
         </dependency>
 
-        
-        <dependency>
-            <groupId>com.heytap.ad.show.recall</groupId>
-            <artifactId>ad-show-recall-index-sdk</artifactId>
-            <version>0.0.1-RC02</version>
-        </dependency>
-
     </dependencies>
 
 
