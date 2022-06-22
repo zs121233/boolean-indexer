@@ -1,7 +1,7 @@
 package entities.query;
 
 /**
- * @author 80304042
+ * @author zhangsheng
  */
 public enum QueryType {
     /**

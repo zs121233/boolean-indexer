@@ -8,7 +8,7 @@ import lombok.Data;
  * attr1_value1: [Entry5]
  * attr1_value2: [Entry1,Entry2, Entry7]
  *
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class AttributeCursor implements Comparable<AttributeCursor>{

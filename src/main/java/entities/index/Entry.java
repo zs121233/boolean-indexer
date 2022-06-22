@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Each entry of a posting list represents a conjunction c and contains the ID of c and a bit
  * indicating whether the key (A, v) is involved in an ∈ or 6∈ predicate in c (ignore the third value for now).
  * like : (C4, ∈)
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class Entry implements Comparable<Entry>, Serializable {

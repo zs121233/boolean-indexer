@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class SizeSubBooleanIndex {

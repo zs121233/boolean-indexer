@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * OR 比较器
  * tag ∈ {value1, value2, value3}
- * @author 80304042
+ * @author zhangsheng
  */
 @Setter
 public class OrMatcher implements QueryExpressionMatcher{

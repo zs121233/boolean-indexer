@@ -6,7 +6,7 @@ import entities.query.matcher.QueryExpressionMatcher;
 
 
 /**
- * @author 80304042
+ * @author zhangsheng
  */
 public class RangeEntriesContainer implements EntriesContainer {
 

@@ -3,7 +3,7 @@ package entities.query.matcher;
 import entities.query.QueryType;
 
 /**
- * @author 80304042
+ * @author zhangsheng
  */
 public interface QueryExpressionMatcher {
 

@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * EQUAL 比较器
  * tag = value1
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class EqualMatcher implements QueryExpressionMatcher{

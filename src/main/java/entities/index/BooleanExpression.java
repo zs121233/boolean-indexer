@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * BooleanExpressions expression a bool logic like: age (in) [15,16,17], city (not in) [shanghai,yz]
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class BooleanExpression{

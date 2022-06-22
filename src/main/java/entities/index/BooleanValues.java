@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * BoolValues expression a bool logic like: (in) [15,16,17], (not in) [shanghai,yz] eg
- * @author 80304042
+ * @author zhangsheng
  */
 @Data
 public class BooleanValues {
