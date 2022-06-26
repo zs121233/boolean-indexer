@@ -12,12 +12,16 @@ import java.util.List;
  */
 public class MathUtil {
 
+    /**
+     * todo: 合并两个排序列表
+     */
     public static <T extends Comparator<T>> T[] mergeSortedList(List<T> e) {
         return null;
     }
 
     /**
      * 二分查找
+     * 实现后发现不如直接遍历
      */
     public static int searchInsert(Entry[] entries, int currentPosition, long target) {
         int left = currentPosition;

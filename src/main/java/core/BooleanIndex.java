@@ -9,16 +9,28 @@ import java.util.*;
 
 
 /**
+ * K-index
  * @author zhangsheng
  */
 public class BooleanIndex {
 
 
     /**
-     * todo 根据属性id的总数来确定数组长度
+     * todo: 1.根据属性id的总数来确定数组长度
+     *       2.分层并行检索
+     * 第一层索引，用于检索能够匹配查询条件的conjunctionIds
+     * 整个倒排索引按ConjSize @link entities.index.Conjunction#initConjunctionSize(java.util.List)
+     * 被拆分成K个层级，在检索时，只检索 0 - expressionsSize层级的索引
+     *
+     * For a K-index (K ≤ t), a conjunction c (with K terms) matches S
+     * only if there are exactly K posting lists where each list is for a key (A, v) in S
+     * and the ID of c is in the list with an ∈ annotation.
      */
-    private SizeSubBooleanIndex[] sizeSubBooleanIndices = new SizeSubBooleanIndex[100];
+    private final SizeSubBooleanIndex[] sizeSubBooleanIndices = new SizeSubBooleanIndex[100];
 
+    /**
+     * 第二层索引，根据conjunctionIds查询有相同conj的docs
+     */
     private final Map<Long, Set<Document>> conjunctionToDocuments = new HashMap<>();
 
 
@@ -73,6 +85,11 @@ public class BooleanIndex {
         return sizeSubBooleanIndices[conjunctionSizeK];
     }
 
+    /**
+     * 校验文档合法性
+     * @param document doc
+     * @return is valid doc
+     */
     private boolean checkValidDoc(Document document) {
         return true;
     }

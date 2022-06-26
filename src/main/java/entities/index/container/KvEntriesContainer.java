@@ -68,7 +68,18 @@ public class KvEntriesContainer implements EntriesContainer {
                 return AttributeCursor.of(entriesCursors.toArray(new EntriesCursor[]{}));
             }
         } else if (QueryTypeEnum.AND.equals(queryExpressionMatcher.getQueryType())) {
-
+            Object[] values = queryExpressionMatcher.getValues();
+            List<EntriesCursor> entriesCursors = new ArrayList<>(values.length);
+            for (Object object: queryExpressionMatcher.getValues()) {
+                Entry[] entries = postingListMap.get(object);
+                if(entries != null) {
+                    EntriesCursor entriesCursor = EntriesCursor.of(entries);
+                    entriesCursors.add(entriesCursor);
+                }
+            }
+            if(!entriesCursors.isEmpty()) {
+                return AttributeCursor.of(entriesCursors.toArray(new EntriesCursor[]{}));
+            }
             return null;
         }
         return null;
