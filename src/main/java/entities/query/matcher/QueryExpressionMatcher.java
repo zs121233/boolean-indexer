@@ -1,13 +1,14 @@
 package entities.query.matcher;
 
-import entities.query.QueryType;
+import entities.query.QueryTypeEnum;
+import java.io.Serializable;
 
 /**
  * @author zhangsheng
  */
-public interface QueryExpressionMatcher {
+public interface QueryExpressionMatcher extends Serializable {
 
-    QueryType getQueryType();
+    QueryTypeEnum getQueryType();
 
     boolean isMatch(Object values);
 

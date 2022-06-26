@@ -1,7 +1,9 @@
 package entities.index;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -10,7 +12,8 @@ import java.util.Collection;
  * @author zhangsheng
  */
 @Data
-public class Document {
+@NoArgsConstructor
+public class Document implements Serializable {
 
     /**
      * 文档id

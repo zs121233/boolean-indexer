@@ -2,12 +2,16 @@ package entities.query;
 
 import entities.query.matcher.QueryExpressionMatcher;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @author zhangsheng
  */
 @Data
-public class Assignment {
+@NoArgsConstructor
+public class Assignment implements Serializable {
     /**
      * 属性值
      */

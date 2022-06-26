@@ -1,6 +1,10 @@
 package entities.index;
 
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -8,7 +12,8 @@ import java.util.Arrays;
  * @author zhangsheng
  */
 @Data
-public class BooleanExpression{
+@NoArgsConstructor
+public class BooleanExpression implements Serializable {
     private String attribute;
     private BooleanValues booleanValues;
 

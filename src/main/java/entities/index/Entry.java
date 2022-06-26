@@ -1,6 +1,7 @@
 package entities.index;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 /**
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @author zhangsheng
  */
 @Data
+@EqualsAndHashCode
 public class Entry implements Comparable<Entry>, Serializable {
     /**
      * include: true exclude: false

@@ -11,7 +11,7 @@ import java.nio.charset.Charset;
  */
 public class IdUtils {
 
-    public static long generateId(int seed, String assignments) {
+    public static long generateConjId(int seed, String assignments) {
         // hashing
         HashFunction hashFunction = Hashing.murmur3_128(seed);
         HashCode hashCode = hashFunction.newHasher().putString(assignments, Charset.defaultCharset()).hash();

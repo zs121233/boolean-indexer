@@ -1,7 +1,8 @@
 package entities.query.matcher;
 
-import entities.query.QueryType;
+import entities.query.QueryTypeEnum;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * EQUAL 比较器
@@ -9,6 +10,7 @@ import lombok.Data;
  * @author zhangsheng
  */
 @Data
+@NoArgsConstructor
 public class EqualMatcher implements QueryExpressionMatcher{
 
     private Object[] value;
@@ -20,8 +22,8 @@ public class EqualMatcher implements QueryExpressionMatcher{
     }
 
     @Override
-    public QueryType getQueryType() {
-        return QueryType.EQUAL;
+    public QueryTypeEnum getQueryType() {
+        return QueryTypeEnum.EQUAL;
     }
 
     @Override

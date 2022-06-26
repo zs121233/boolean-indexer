@@ -1,8 +1,11 @@
 package entities.index;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import utils.IdUtils;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -12,7 +15,8 @@ import java.util.List;
  * @author zhangsheng
  */
 @Data
-public class Conjunction {
+@NoArgsConstructor
+public class Conjunction implements Serializable {
     /**
      *
      */
@@ -24,13 +28,14 @@ public class Conjunction {
 
     private List<BooleanExpression> booleanExpressions;
 
+
     public static Conjunction of(BooleanExpression... booleanExpressions) {
         Conjunction conjunction = new Conjunction();
         List<BooleanExpression> booleanExpressionsList = Arrays.asList(booleanExpressions);
         booleanExpressionsList.sort(Comparator.comparing(BooleanExpression::getAttribute));
         conjunction.setBooleanExpressions(booleanExpressionsList);
         conjunction.setConjunctionSize(initConjunctionSize(conjunction.getBooleanExpressions()));
-        conjunction.setConjunctionId(IdUtils.generateId(conjunction.getConjunctionSize(), conjunction.getBooleanExpressions().toString()));
+        conjunction.setConjunctionId(IdUtils.generateConjId(conjunction.getConjunctionSize(), conjunction.getBooleanExpressions().toString()));
         return conjunction;
     }
 

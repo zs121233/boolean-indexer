@@ -31,9 +31,8 @@ public class EntriesCursor implements Comparable<EntriesCursor>{
     }
 
     /**
-     * todo： 优化成二分查找
-     * @param id
-     * @return
+     * todo： 优化成二分查找?
+     * 由于skip是从左到右逐渐增加，二分查找并不能优化多少。甚至是负作用。
      */
     public Entry skip(long id) {
         for (; currentPosition < entries.length; this.currentPosition++) {

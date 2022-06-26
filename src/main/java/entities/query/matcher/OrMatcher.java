@@ -1,14 +1,16 @@
 package entities.query.matcher;
 
-import entities.query.QueryType;
-import lombok.Setter;
+import entities.query.QueryTypeEnum;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * OR 比较器
  * tag ∈ {value1, value2, value3}
  * @author zhangsheng
  */
-@Setter
+@Data
+@NoArgsConstructor
 public class OrMatcher implements QueryExpressionMatcher{
 
     private Object[] values;
@@ -20,8 +22,8 @@ public class OrMatcher implements QueryExpressionMatcher{
     }
 
     @Override
-    public QueryType getQueryType() {
-        return QueryType.OR;
+    public QueryTypeEnum getQueryType() {
+        return QueryTypeEnum.OR;
     }
 
     @Override

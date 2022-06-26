@@ -3,7 +3,7 @@ package entities.query;
 /**
  * @author zhangsheng
  */
-public enum QueryType {
+public enum QueryTypeEnum {
     /**
      * = only one value
      */
@@ -15,8 +15,14 @@ public enum QueryType {
     /**
      * A OR B
      */
-    OR
-
-
+    OR,
+    /**
+     * > A
+     */
+    OVER,
+    /**
+     * [A, B]
+     */
+    RANGE
 
 }
