@@ -78,9 +78,10 @@ public class KvEntriesContainer implements EntriesContainer {
                 }
             }
             if(!entriesCursors.isEmpty()) {
-                return AttributeCursor.of(entriesCursors.toArray(new EntriesCursor[]{}));
+                //todo 完善取交集逻辑
+                List<Entry> entries = MathUtil.intersectionKSortedList(entriesCursors);
+                return AttributeCursor.of(EntriesCursor.of(entries.toArray(new Entry[]{})));
             }
-            return null;
         }
         return null;
     }

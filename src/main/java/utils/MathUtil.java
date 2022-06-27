@@ -4,6 +4,7 @@ import entities.index.Entry;
 import entities.query.EntriesCursor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -120,4 +121,12 @@ public class MathUtil {
         return EntriesCursor.of(newList.toArray(Entry[]::new));
     }
 
+    /**
+     * todo 完善k个排序列表取交集的逻辑
+     */
+    public static List<Entry> intersectionKSortedList(List<EntriesCursor> entriesCursors) {
+        List<Entry> entries = new ArrayList<>();
+        Collections.sort(entriesCursors);
+        return entries;
+    }
 }
