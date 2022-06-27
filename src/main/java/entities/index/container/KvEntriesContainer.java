@@ -51,7 +51,7 @@ public class KvEntriesContainer implements EntriesContainer {
             Entry[] entries = postingListMap.get(queryExpressionMatcher.getValues()[0]);
             if(entries != null) {
                 EntriesCursor entriesCursor = EntriesCursor.of(entries);
-                return AttributeCursor.of(entriesCursor);
+                return AttributeCursor.of(List.of(entriesCursor));
             }
         } else if (QueryTypeEnum.OR.equals(queryExpressionMatcher.getQueryType())) {
             Object[] values = queryExpressionMatcher.getValues();
@@ -64,8 +64,7 @@ public class KvEntriesContainer implements EntriesContainer {
                 }
             }
             if(!entriesCursors.isEmpty()) {
-                Collections.sort(entriesCursors);
-                return AttributeCursor.of(entriesCursors.toArray(new EntriesCursor[]{}));
+                return AttributeCursor.of(entriesCursors);
             }
         } else if (QueryTypeEnum.AND.equals(queryExpressionMatcher.getQueryType())) {
             Object[] values = queryExpressionMatcher.getValues();
@@ -80,7 +79,7 @@ public class KvEntriesContainer implements EntriesContainer {
             if(!entriesCursors.isEmpty()) {
                 //todo 完善取交集逻辑
                 List<Entry> entries = MathUtil.intersectionKSortedList(entriesCursors);
-                return AttributeCursor.of(EntriesCursor.of(entries.toArray(new Entry[]{})));
+                return AttributeCursor.of(List.of(EntriesCursor.of(entries.toArray(new Entry[]{}))));
             }
         }
         return null;

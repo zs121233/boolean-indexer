@@ -53,9 +53,12 @@ public class BuildIndexTest {
     public static BooleanIndex buildIndexByFile() {
         BooleanIndex booleanIndex = new BooleanIndex();
         List<Document> documents = MockDocumentTest.mockDocsByFile();
+        int docNums = 0;
         for (Document document : documents) {
             booleanIndex.addDocument(document);
+            docNums ++;
         }
+        System.out.println("index docNums=" + docNums);
         return booleanIndex;
     }
 

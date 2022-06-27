@@ -16,7 +16,7 @@ public class BooleanIndex {
 
 
     /**
-     * todo: 1.根据属性id的总数来确定数组长度
+     * todo: 1.根据属性id的总数来确定数组长度(目前暂时初始化100个)
      *       2.分层并行检索
      * 第一层索引，用于检索能够匹配查询条件的conjunctionIds
      * 整个倒排索引按ConjSize @link entities.index.Conjunction#initConjunctionSize(java.util.List)
@@ -46,6 +46,14 @@ public class BooleanIndex {
         //DNF表达式由多个Conj组成
         Collection<Conjunction> conjunctions = document.getConjunctions();
         for (Conjunction conj: conjunctions) {
+            Set<Document> documents = this.conjunctionToDocuments.get(conj.getConjunctionId());
+            if (documents != null) {
+                documents.add(document);
+                continue;
+            }
+            Set<Document> documentSet = new HashSet<>();
+            documentSet.add(document);
+            conjunctionToDocuments.put(conj.getConjunctionId(), documentSet);
             int conjunctionSizeK = conj.getConjunctionSize();
             //获取第K层的sub子索引
             SizeSubBooleanIndex sizeSubBooleanIndex = getOrInitKSizeContainers(conjunctionSizeK);
@@ -55,14 +63,6 @@ public class BooleanIndex {
                 EntriesContainer entriesContainer = sizeSubBooleanIndex.getEntriesContainer(attribute);
                 //将booleanValues加入容器entriesContainer中
                 entriesContainer.addEntry(booleanExpression.getBooleanValues(), conj.getConjunctionId());
-            }
-            Set<Document> documents = this.conjunctionToDocuments.get(conj.getConjunctionId());
-            if (documents != null) {
-                documents.add(document);
-            } else {
-                Set<Document> documentSet = new HashSet<>();
-                documentSet.add(document);
-                conjunctionToDocuments.put(conj.getConjunctionId(), documentSet);
             }
         }
     }
@@ -170,7 +170,7 @@ public class BooleanIndex {
     private List<AttributeCursor> initKSizeAttributeCursor(QueryExpressions queryExpressions, SizeSubBooleanIndex kSizeSubBooleanIndex) {
         List<AttributeCursor> attributeCursors = new ArrayList<>(queryExpressions.getExpressionsSize());
         //获取第k层子索引subBooleanIndex
-        for (Assignment assignment: queryExpressions.getAssignments()) {
+        for (Assignment assignment : queryExpressions.getAssignments()) {
             //拉取第k层attribute属性的entriesContainer
             EntriesContainer entriesContainer = kSizeSubBooleanIndex.getEntriesContainer(assignment.getAttribute());
             //entriesContainer中传入该assignment的查询表达式(查询表达式包括 "=","|","&&","<",">")

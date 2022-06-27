@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -32,5 +33,21 @@ public class Document implements Serializable {
         return document;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Document document = (Document) o;
+        return docId == document.getDocId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(docId);
+    }
 
 }

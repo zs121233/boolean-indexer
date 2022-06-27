@@ -2,6 +2,8 @@ package entities.query;
 
 import entities.index.Entry;
 import lombok.Data;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * AttributeCursor for a boolean expression: {"attr1", "in", [value1, value2]}
@@ -23,11 +25,11 @@ public class AttributeCursor implements Comparable<AttributeCursor>{
      * attr1_value1: [Entry5]
      * attr1_value2: [Entry1, Entry2, Entry7]
      */
-    private EntriesCursor[] entriesCursors;
+    private List<EntriesCursor> entriesCursors;
 
-    public static AttributeCursor of(EntriesCursor... entriesCursors) {
+    public static AttributeCursor of(List<EntriesCursor> entriesCursors) {
         AttributeCursor attributeCursor = new AttributeCursor();
-        attributeCursor.setCurrentEntriesCursor(entriesCursors[0]);
+        attributeCursor.setCurrentEntriesCursor(Collections.min(entriesCursors));
         attributeCursor.setEntriesCursors(entriesCursors);
         return attributeCursor;
     }

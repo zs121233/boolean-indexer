@@ -129,4 +129,22 @@ public class MathUtil {
         Collections.sort(entriesCursors);
         return entries;
     }
+
+
+    /**
+     * 数组取最小值
+     */
+    public static <T extends Comparable<T>> T arrayMin(T[] array) {
+        if(array.length == 1) {
+            return array[0];
+        }
+        T candidate = array[0];
+        for (T t: array) {
+            if (t.compareTo(candidate) < 0) {
+                candidate = t;
+            }
+        }
+        return candidate;
+    }
+
 }
