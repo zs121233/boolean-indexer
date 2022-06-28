@@ -14,14 +14,17 @@ import java.util.Arrays;
 @Data
 @NoArgsConstructor
 public class BooleanExpression implements Serializable {
+
     /**
      * 属性值
      */
     private String attribute;
+
     /**
-     *
+     * boolean predicate and values
      */
     private BooleanValues booleanValues;
+
 
     public BooleanExpression(String attribute, boolean predicate, Object... values) {
         if (values == null || values.length == 0) {

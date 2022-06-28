@@ -45,7 +45,7 @@ public class BooleanIndex {
     private void buildDocEntries(Document document) {
         //DNF表达式由多个Conj组成
         Collection<Conjunction> conjunctions = document.getConjunctions();
-        for (Conjunction conj: conjunctions) {
+        for (Conjunction conj : conjunctions) {
             Set<Document> documents = this.conjunctionToDocuments.get(conj.getConjunctionId());
             if (documents != null) {
                 documents.add(document);
@@ -106,8 +106,6 @@ public class BooleanIndex {
             retrieveKSizeDoc(queries, documents, k);
         }
         return documents;
-
-
     }
 
     private void retrieveKSizeDoc(QueryExpressions queries, List<Document> documents, int k) {
